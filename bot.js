@@ -87,6 +87,33 @@ function setup(mode) {
     bot.addListener("error", function(message) {
         console.log('ERROR: ', message);
     });
+    bot.addListener("registered", function(messsage) {
+        console.log('REGISTERED: ', message);
+    });
+    bot.addListener("motd", function(motd) {
+        console.log('MOTD: ', motd);
+    });
+    bot.addListener("topic", function(channel, topic, nick, message) {
+        console.log('Topic (set by ', nick, '): ', motd);
+    });
+    bot.addListener("join", function(channel, nick, message) {
+        console.log('JOIN: ', nick, ' joined ', channel);
+    });
+    bot.addListener("part", function(channel, nick, reason, message) {
+        console.log('PART: ', nick, ' left ', channel);
+    });
+    bot.addListener("quit", function(nick, reason, channels, message) {
+        console.log('QUIT: ', nick, ' quit');
+    });
+    bot.addListener("kick", function(channel, nick, by, reason, message) {
+        console.log('KICK: ', nick, ' kicked from ', channel, ' by ', by);
+    });
+    bot.addListener("kill", function(nick, reason, channels, message) {
+        console.log('KILL: ', nick, ' was killed (', reason, ')');
+    });
+    bot.addListener("nick", function(oldnick, newnick, channels, message) {
+        console.log('NICK: ', oldnick ' changed his nickname to ', newnick);
+    });
 }
 
 function convert(mode) {
