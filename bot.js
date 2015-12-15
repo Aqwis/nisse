@@ -79,40 +79,41 @@ function setup(mode) {
     };
 
     bot.addListener("message#", reactToMessage);
+    bot.addListener("action", reactToMessage);
     bot.addListener("message", function(nick, to, text, message) {
         if (to === mode_config['bot_name']) {
             reactToMessage(nick, nick, text, message);
         }
     });
     bot.addListener("error", function(message) {
-        console.log('ERROR: ', message);
+        console.log('ERROR:', message);
     });
     bot.addListener("registered", function(messsage) {
-        console.log('REGISTERED: ', message);
+        console.log('REGISTERED');
     });
     bot.addListener("motd", function(motd) {
-        console.log('MOTD: ', motd);
+        console.log('MOTD:', motd);
     });
     bot.addListener("topic", function(channel, topic, nick, message) {
-        console.log('Topic (set by ', nick, '): ', motd);
+        console.log('Topic (set by', nick, '):', topic);
     });
     bot.addListener("join", function(channel, nick, message) {
-        console.log('JOIN: ', nick, ' joined ', channel);
+        console.log('JOIN:', nick, 'joined', channel);
     });
     bot.addListener("part", function(channel, nick, reason, message) {
-        console.log('PART: ', nick, ' left ', channel);
+        console.log('PART:', nick, 'left', channel);
     });
     bot.addListener("quit", function(nick, reason, channels, message) {
-        console.log('QUIT: ', nick, ' quit');
+        console.log('QUIT:', nick, 'quit');
     });
     bot.addListener("kick", function(channel, nick, by, reason, message) {
-        console.log('KICK: ', nick, ' kicked from ', channel, ' by ', by);
+        console.log('KICK:', nick, 'kicked from', channel, 'by', by);
     });
     bot.addListener("kill", function(nick, reason, channels, message) {
-        console.log('KILL: ', nick, ' was killed (', reason, ')');
+        console.log('KILL:', nick, 'was killed (', reason, ')');
     });
     bot.addListener("nick", function(oldnick, newnick, channels, message) {
-        console.log('NICK: ', oldnick ' changed his nickname to ', newnick);
+        console.log('NICK:', oldnick, 'changed their nickname to', newnick);
     });
 }
 
