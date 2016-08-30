@@ -28,13 +28,21 @@ function speak(text, bundle) {
 function setup(mode) {
     var mode_config = settings.modes[mode];
     var db = new Database(settings.database_file, mode);
+    var password = undefined;
+    var sasl = false;
+    if (mode_config['password'] && mode_config['password'].length > 0) {
+        var password = mode_config['password'];
+        var sasl = true;
+    }
     var bot = new irc.Client(
                 mode_config['server'],
                 mode_config['bot_name'],
                 { 
                     channels: mode_config['channels'],
                     realName: 'IRC bot by Aqwis',
-                    userName: S(mode_config['bot_name']).camelize().s
+                    userName: S(mode_config['bot_name']).camelize().s,
+                    sasl: sasl,
+                    password: password
                 }
             );
 

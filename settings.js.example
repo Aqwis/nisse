@@ -6,6 +6,7 @@ var settings = {}
 // * server: hostname of the IRC server to connect to
 // * channels: array of channels the bot should connect to.
 // * bot_name: nickname of the bot
+// * password: SASL password (for NickServ authentication)
 // * superuser: here, you can define the username (i.e. the
 //              IRC username, not nickname) and password
 //              of the superuser, who can @login as admin
@@ -20,6 +21,7 @@ settings.modes = {
         'server': 'irc.freenode.net',
         'channels': ['#linux'],
         'bot_name': 'nisse',
+        'password': '',
         'superuser': { 'username': '', 'password': '' }
     }
 };
